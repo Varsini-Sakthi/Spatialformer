@@ -13,7 +13,7 @@ A spatially aware transformer that integrates **gene expression** and **spatial 
 
 ## Overview
 
-Standard single-cell models treat each cell independently. SpatialFormer extends this by giving each cell access to its spatial neighbors - encoding tissue microenvironment as a sequence of tokens fed into a transformer encoder.
+Standard single-cell models treat each cell independently. SpatialFormer extends this by giving each cell access to its spatial neighbors, encoding tissue microenvironment as a sequence of tokens fed into a transformer encoder.
 
 **Key idea:** For each spot, a sequence `[CLS, query_cell, neighbor_1, ..., neighbor_6]` is constructed. The transformer learns which neighbors to attend to, and the CLS token embedding is used for classification.
 
@@ -76,7 +76,7 @@ Token type (CLS/query/nbr)  ──► Embedding lookup  ──┘
 
 **Gene saliency** (gradient × input) identifies cluster-specific marker genes consistent with known mouse brain cell type markers.
 
-**Spatial attention maps** show that neighbor reliance varies by tissue region - boundary spots between anatomical domains show higher neighbor attention than spots in homogeneous regions.
+**Spatial attention maps** show that neighbor reliance varies by tissue region, boundary spots between anatomical domains show higher neighbor attention than spots in homogeneous regions.
 
 ---
 
@@ -128,7 +128,7 @@ Open `http://127.0.0.1:7860`, upload any preprocessed `.h5ad` file with `obsm['s
 
 ### Input format
 
-Your `.h5ad` file must have:
+The `.h5ad` file must have:
 - `adata.X` - raw or normalized gene expression matrix
 - `adata.var_names` - gene names (overlap with training HVGs is handled automatically)
 - `adata.obsm['spatial']` - 2D spatial coordinates
@@ -164,17 +164,17 @@ Open `Spatially Aware Cell State Prediction.ipynb` and run all cells in order. T
 
 ---
 
-## Citation
+## References
 
-If you use this project, please cite the 10x Genomics Visium dataset and the following tools:
-
-- Wolf et al. (2018) - SCANPY: large-scale single-cell gene expression data analysis
-- Vaswani et al. (2017) - Attention Is All You Need
+- Wolf, F. A., Angerer, P., & Theis, F. J. (2018). SCANPY: large-scale single-cell gene expression data analysis. Genome biology, 19(1), 15.
+- Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., ... & Polosukhin, I. (2017). Attention is all you need. Advances in neural information processing systems, 30.
 
 ---
 
 ## Author
 
-**Varshini Sakthi**  
+**Varsini Sakthivadivel Ramasamy**
+**Ms Bioinformatics, Johns Hopkins University**
+**B.Tech Biotechnology, VIT University**
 Spatial transcriptomics + deep learning research  
 🔗 [Hugging Face](https://huggingface.co/Varsini-Sakthi)
