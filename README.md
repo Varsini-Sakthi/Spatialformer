@@ -1,4 +1,4 @@
-# SpatialFormer — Spatially Aware Cell State Prediction
+# SpatialFormer - Spatially Aware Cell State Prediction
 
 [![Hugging Face Spaces](https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Varsini-Sakthi/Spatialformer)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
@@ -13,7 +13,7 @@ A spatially aware transformer that integrates **gene expression** and **spatial 
 
 ## Overview
 
-Standard single-cell models treat each cell independently. SpatialFormer extends this by giving each cell access to its spatial neighbors — encoding tissue microenvironment as a sequence of tokens fed into a transformer encoder.
+Standard single-cell models treat each cell independently. SpatialFormer extends this by giving each cell access to its spatial neighbors - encoding tissue microenvironment as a sequence of tokens fed into a transformer encoder.
 
 **Key idea:** For each spot, a sequence `[CLS, query_cell, neighbor_1, ..., neighbor_6]` is constructed. The transformer learns which neighbors to attend to, and the CLS token embedding is used for classification.
 
@@ -49,7 +49,7 @@ Token type (CLS/query/nbr)  ──► Embedding lookup  ──┘
 
 ## Dataset
 
-- **Source**: 10x Genomics Visium — Mouse Brain Coronal Section
+- **Source**: 10x Genomics Visium - Mouse Brain Coronal Section
 - **Spots**: 2,796 tissue-covered spots
 - **Genes**: 32,285 → filtered to 2,000 highly variable genes
 - **Labels**: Graph-based clustering (10 clusters) from Cell Ranger output
@@ -66,7 +66,7 @@ Token type (CLS/query/nbr)  ──► Embedding lookup  ──┘
 | XGBoost | 0.8982 | 0.8858 |
 | **SpatialTransformer** | **0.8911** | **0.8795** |
 
-> The transformer achieves competitive performance while additionally providing spatial attention maps and neighborhood-aware embeddings — interpretability that purely expression-based models lack.
+> The transformer achieves competitive performance while additionally providing spatial attention maps and neighborhood-aware embeddings - interpretability that purely expression-based models lack.
 
 ---
 
@@ -76,7 +76,7 @@ Token type (CLS/query/nbr)  ──► Embedding lookup  ──┘
 
 **Gene saliency** (gradient × input) identifies cluster-specific marker genes consistent with known mouse brain cell type markers.
 
-**Spatial attention maps** show that neighbor reliance varies by tissue region — boundary spots between anatomical domains show higher neighbor attention than spots in homogeneous regions.
+**Spatial attention maps** show that neighbor reliance varies by tissue region - boundary spots between anatomical domains show higher neighbor attention than spots in homogeneous regions.
 
 ---
 
@@ -129,9 +129,9 @@ Open `http://127.0.0.1:7860`, upload any preprocessed `.h5ad` file with `obsm['s
 ### Input format
 
 Your `.h5ad` file must have:
-- `adata.X` — raw or normalized gene expression matrix
-- `adata.var_names` — gene names (overlap with training HVGs is handled automatically)
-- `adata.obsm['spatial']` — 2D spatial coordinates
+- `adata.X` - raw or normalized gene expression matrix
+- `adata.var_names` - gene names (overlap with training HVGs is handled automatically)
+- `adata.obsm['spatial']` - 2D spatial coordinates
 
 ---
 
@@ -168,8 +168,8 @@ Open `Spatially Aware Cell State Prediction.ipynb` and run all cells in order. T
 
 If you use this project, please cite the 10x Genomics Visium dataset and the following tools:
 
-- Wolf et al. (2018) — SCANPY: large-scale single-cell gene expression data analysis
-- Vaswani et al. (2017) — Attention Is All You Need
+- Wolf et al. (2018) - SCANPY: large-scale single-cell gene expression data analysis
+- Vaswani et al. (2017) - Attention Is All You Need
 
 ---
 
