@@ -174,7 +174,10 @@ Open `Spatially Aware Cell State Prediction.ipynb` and run all cells in order. T
 ## Author
 
 **Varsini Sakthivadivel Ramasamy**
+
 **Ms Bioinformatics, Johns Hopkins University**
+
 **B.Tech Biotechnology, VIT University**
+
 Spatial transcriptomics + deep learning research  
 🔗 [Hugging Face](https://huggingface.co/Varsini-Sakthi)
