@@ -133,8 +133,8 @@ def run_inference(h5ad_file):
 
     return fig1, fig2, csv_path, summary
 
-with gr.Blocks(title="SpatialFormer") as demo:
-    gr.Markdown("## SpatialFormer - Spatially Aware Cell State Prediction")
+with gr.Blocks(title="Transformomics") as demo:
+    gr.Markdown("## Transformomics - Spatially Aware Cell State Prediction")
     gr.Markdown("Upload a preprocessed '.h5ad' file with 'obsm['spatial']'.")
     with gr.Row():
         file_input = gr.File(label="Upload .h5ad file", file_types=[".h5ad"])

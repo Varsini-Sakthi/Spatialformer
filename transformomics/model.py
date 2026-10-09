@@ -1,4 +1,4 @@
-"""SpatialFormer v2 model.
+"""Transformomics v2 model.
 
 Differences from the v1 notebook model (see legacy/):
   * neighbors are described by *relative* offsets (dx, dy, dist) in units of the median
@@ -42,7 +42,7 @@ class Block(nn.Module):
         return x, w
 
 
-class SpatialFormer(nn.Module):
+class Transformomics(nn.Module):
     """Tokens: [CLS, query spot, neighbor_1..neighbor_k]."""
 
     def __init__(self, in_dim: int, out_dim: int, k: int = 6, embed_dim: int = 64, heads: int = 4,

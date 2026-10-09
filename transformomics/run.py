@@ -1,7 +1,7 @@
 """Experiment driver.
 
-    python -m spatialformer.run --config configs/microglia.yaml --out results/
-    python -m spatialformer.run --synthetic --out results_synth/      # pipeline smoke test
+    python -m transformomics.run --config configs/microglia.yaml --out results/
+    python -m transformomics.run --synthetic --out results_synth/      # pipeline smoke test
 
 For every outer spatial-block fold x seed it trains/evaluates:
     transformer_real      true spatial neighbors
@@ -150,7 +150,7 @@ def summarize(res: pd.DataFrame, out_dir: str, task: str, cfg: dict):
     pc.to_csv(f"{out_dir}/paired_comparisons.csv", index=False)
 
     metric = "mean Pearson r across programmes" if task == "program" else "macro-F1"
-    lines = [f"# SpatialFormer v2 results\n", f"Primary metric: {metric}; units of replication = "
+    lines = [f"# Transformomics v2 results\n", f"Primary metric: {metric}; units of replication = "
              f"{fm.shape[0]} spatial-block folds (seeds averaged within fold).\n",
              "## Mean score per method\n", summ.to_markdown(), "\n## Paired comparisons (A - B)\n",
              pc.to_markdown(index=False) if len(pc) else "(none)", "\n## Reading this honestly\n"]

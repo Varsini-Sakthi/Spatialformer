@@ -3,7 +3,7 @@
 This is the bridge to the microglia work: the programmes (homeostatic, phagocytic,
 NRF2/Hmox1, Apoc1, chemokine, ...) are defined as gene lists in a YAML file, scored per
 spot/cell, and then (a) tested for spatial autocorrelation and (b) used as prediction
-targets for the SpatialFormer.
+targets for the Transformomics.
 """
 from __future__ import annotations
 

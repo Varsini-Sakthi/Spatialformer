@@ -1,8 +1,12 @@
-# SpatialFormer v2
+# Transformomics v2
 
 Does a spot's spatial neighborhood carry information about its state beyond its own expression
 - and can a small transformer use it? v2 turns the v1 proof-of-concept into a testable protocol and
 connects it to the microglia programme work.
+
+> Formerly named "SpatialFormer". Renamed to avoid confusion with the unrelated, large-scale pre-trained
+> *SpatialFormer* foundation model (Wang, Huang & Winther, bioRxiv 2025, doi:10.1101/2025.01.18.633701).
+> The old Hugging Face Space and `legacy/` files still use the old name in their URLs.
 
 > Status: pipeline verified on **synthetic data only** (see `tests/` and `results_synthetic/`).
 > No claim about real tissue or microglia has been made with it yet. The gene lists in
@@ -48,8 +52,8 @@ show *causal* niche effects.
 ```bash
 pip install -r requirements.txt
 pytest -q                                              # unit tests
-python -m spatialformer.run --synthetic --quick --out results_synthetic/   # smoke test
-python -m spatialformer.run --config configs/microglia.yaml --out results/
+python -m transformomics.run --synthetic --quick --out results_synthetic/   # smoke test
+python -m transformomics.run --config configs/microglia.yaml --out results/
 ```
 
 Input: `.h5ad` with raw counts in `.X` and coordinates in `.obsm['spatial']`.

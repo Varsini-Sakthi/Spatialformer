@@ -3,10 +3,10 @@ import pytest
 
 torch = pytest.importorskip("torch")
 
-from spatialformer.graph import knn_graph, make_split, spatial_block_folds  # noqa: E402
-from spatialformer.model import SpatialFormer  # noqa: E402
-from spatialformer.programs import morans_i, score_programs  # noqa: E402
-from spatialformer.synthetic import make_synthetic  # noqa: E402
+from transformomics.graph import knn_graph, make_split, spatial_block_folds  # noqa: E402
+from transformomics.model import Transformomics  # noqa: E402
+from transformomics.programs import morans_i, score_programs  # noqa: E402
+from transformomics.synthetic import make_synthetic  # noqa: E402
 
 
 def test_knn_offsets_scale_free():
@@ -35,7 +35,7 @@ def test_split_has_no_leakage_with_buffer():
 
 def test_program_scores_track_planted_signal():
     adata, programs = make_synthetic(n_rows=25, n_cols=25, seed=1)
-    from spatialformer.data import normalize_log1p
+    from transformomics.data import normalize_log1p
     logX = normalize_log1p(adata.X)
     s, names, counts = score_programs(logX, adata.var_names, programs)
     assert s.shape == (625, 4) and names == list(programs)
@@ -53,7 +53,7 @@ def test_morans_i_detects_structure():
 
 
 def test_model_forward_and_neighbor_mask():
-    m = SpatialFormer(in_dim=50, out_dim=3, k=6).eval()
+    m = Transformomics(in_dim=50, out_dim=3, k=6).eval()
     xq, xn, off = torch.randn(4, 50), torch.randn(4, 6, 50), torch.randn(4, 6, 2)
     o_real = m(xq, xn, off)
     assert o_real.shape == (4, 3)

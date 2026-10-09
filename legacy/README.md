@@ -1,4 +1,6 @@
-# SpatialFormer - Spatially Aware Cell State Prediction
+> **Legacy (v1).** This is the original proof-of-concept, now named Transformomics (formerly SpatialFormer). The Hugging Face Space URLs below keep the old name until the Space is renamed.
+
+# Transformomics - Spatially Aware Cell State Prediction
 
 [![Hugging Face Spaces](https://img.shields.io/badge/🤗%20Hugging%20Face-Spaces-blue)](https://huggingface.co/spaces/Varsini-Sakthi/Spatialformer)
 [![Python 3.10](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/)
@@ -13,7 +15,7 @@ A spatially aware transformer that integrates **gene expression** and **spatial 
 
 ## Overview
 
-Standard single-cell models treat each cell independently. SpatialFormer extends this by giving each cell access to its spatial neighbors, encoding tissue microenvironment as a sequence of tokens fed into a transformer encoder.
+Standard single-cell models treat each cell independently. Transformomics extends this by giving each cell access to its spatial neighbors, encoding tissue microenvironment as a sequence of tokens fed into a transformer encoder.
 
 **Key idea:** For each spot, a sequence `[CLS, query_cell, neighbor_1, ..., neighbor_6]` is constructed. The transformer learns which neighbors to attend to, and the CLS token embedding is used for classification.
 
@@ -83,7 +85,7 @@ Token type (CLS/query/nbr)  ──► Embedding lookup  ──┘
 ## Project Structure
 
 ```
-spatialformer/
+transformomics/
 ├── Spatially Aware Cell State Prediction.ipynb   # Full training notebook
 ├── app.py                                         # Gradio inference app
 ├── requirements.txt                               # Dependencies

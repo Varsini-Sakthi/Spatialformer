@@ -1,4 +1,4 @@
-"""Training / prediction for the SpatialFormer plus metric helpers."""
+"""Training / prediction for the Transformomics plus metric helpers."""
 from __future__ import annotations
 
 import copy
@@ -9,7 +9,7 @@ import torch
 import torch.nn as nn
 from sklearn.metrics import accuracy_score, f1_score
 
-from .model import SpatialFormer
+from .model import Transformomics
 
 
 @dataclass
@@ -55,7 +55,7 @@ def fit_predict(T: Tensors, tr, va, te, task: str, mcfg: dict, tcfg: dict, seed:
     use_nb = mode != "none"
 
     out_dim = T.y.shape[1] if task == "program" else int(n_classes)
-    model = SpatialFormer(T.X.shape[1], out_dim, k=k, **mcfg)
+    model = Transformomics(T.X.shape[1], out_dim, k=k, **mcfg)
     opt = torch.optim.AdamW(model.parameters(), lr=tcfg["lr"], weight_decay=tcfg["weight_decay"])
     loss_fn = nn.MSELoss() if task == "program" else nn.CrossEntropyLoss()
     bs = tcfg["batch_size"]

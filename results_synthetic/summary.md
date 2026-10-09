@@ -1,4 +1,4 @@
-# SpatialFormer v2 results
+# Transformomics v2 results
 
 Primary metric: mean Pearson r across programmes; units of replication = 4 spatial-block folds (seeds averaged within fold).
 
