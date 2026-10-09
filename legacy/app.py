@@ -53,14 +53,16 @@ def run_inference(h5ad_file):
     sc.pp.normalize_total(adata, target_sum=1e4)
     sc.pp.log1p(adata)
 
-    available = [g for g in hvg_genes if g in adata.var_names]
-    missing = len(hvg_genes) - len(available)
-    adata = adata[:, available].copy()
-
-    X = adata.X.toarray() if hasattr(adata.X, "toarray") else adata.X
-
-    if missing > 0:
-        X = np.hstack([X, np.zeros((X.shape[0], missing), dtype=np.float32)])
+    # Align columns to the training HVG order; genes absent from the upload stay zero.
+    # (The previous version appended zero columns at the END, which shifted every present
+    # gene to the wrong input position whenever any HVG was missing.)
+    var_pos = {g: i for i, g in enumerate(adata.var_names)}
+    present = [(j, var_pos[g]) for j, g in enumerate(hvg_genes) if g in var_pos]
+    missing = len(hvg_genes) - len(present)
+    Xfull = adata.X.toarray() if hasattr(adata.X, "toarray") else np.asarray(adata.X)
+    X = np.zeros((adata.n_obs, len(hvg_genes)), dtype=np.float32)
+    cols_train, cols_up = zip(*present)
+    X[:, list(cols_train)] = Xfull[:, list(cols_up)]
 
     coords = adata.obsm["spatial"].astype(np.float32)
     coords_norm = (coords - coords_mean) / coords_std
