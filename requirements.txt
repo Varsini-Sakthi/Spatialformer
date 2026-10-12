@@ -1,10 +1,10 @@
-gradio
-torch
-scanpy
-anndata
 numpy
+scipy
 pandas
 scikit-learn
-umap-learn
+torch
+anndata
+pyyaml
+tabulate
+pytest
 matplotlib
-seaborn
